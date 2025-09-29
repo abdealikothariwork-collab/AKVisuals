@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AK Visuals - UI/UX & Graphic Design Studio</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #e11d48; /* Red */
+            --secondary-color: #be123c; /* Darker Red */
+            --dark-color: #000000; /* Black */
+            --light-bg: #f9fafb;
+            --text-color: #374151;
+            --gradient: linear-gradient(135deg, #e11d48, #be123c); /* Red gradient */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 2rem;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(225, 29, 72, 0.4);
+        }
+        
+        .hero-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+        
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background-color: var(--primary-color);
+            top: -150px;
+            right: -150px;
+        }
+        
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background-color: var(--secondary-color);
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background-color: var(--light-bg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            padding: 5rem 2rem;
+            background-color: var(--light-bg);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(225, 29, 72, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-overlay a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 2px solid white;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-overlay a:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        .portfolio-category {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Social Media Section */
+        .social-media {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        
+        .social-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .social-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+        
+        .follow-instagram {
+            margin-top: 2rem;
+        }
+        
+        .follow-instagram a {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(228, 64, 95, 0.3);
+        }
+        
+        .follow-instagram a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(228, 64, 95, 0.4);
+        }
+        
+        .follow-instagram a i {
+            margin-right: 0.5rem;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 2rem;
+            background-color: var(--light-bg);
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            position: relative;
+        }
+        
+        .testimonial-item {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--primary-color);
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+            opacity: 0.3;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .slider-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .slider-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-card {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .contact-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-card p {
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+        
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .contact-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            padding: 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .email-button {
+            background-color: #f3f4f6;
+            color: var(--primary-color);
+        }
+        
+        .email-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(225, 29, 72, 0.3);
+        }
+        
+        .phone-button {
+            background-color: #f3f4f6;
+            color: #10b981;
+        }
+        
+        .phone-button:hover {
+            background-color: #10b981;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+        
+        .whatsapp-button {
+            background-color: #f3f4f6;
+            color: #25d366;
+        }
+        
+        .whatsapp-button:hover {
+            background-color: #25d366;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .contact-details h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            color: var(--dark-color);
+        }
+        
+        .contact-details p,
+        .contact-details a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-details a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">AK Visuals</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#social">Social</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Designing Interfaces & Visuals That Inspire.</h1>
+            <p>AK Visuals – UI/UX & Graphic Design Studio</p>
+            <a href="#portfolio" class="cta-button">Explore My Work</a>
+        </div>
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About AK Visuals</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>AK Visuals is a creative studio specializing in UI/UX and graphic design. With a passion for visual storytelling and problem-solving, I transform ideas into compelling designs that captivate audiences and drive results.</p>
+                    <p>My approach combines artistic creativity with strategic thinking to deliver designs that not only look stunning but also serve their purpose effectively. I believe in the power of design to communicate, engage, and inspire.</p>
+                    <p>From digital interfaces to print materials, I craft experiences that leave a lasting impression. Every project is an opportunity to push boundaries and create something extraordinary.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://z-cdn-media.chatglm.cn/files/bec3c6b2-56ca-4ba5-b283-89a4f231eb78_Slide%2016_9%20-%206.png?auth_key=1790492816-d087832daae7482089eb56ac375eca78-0-e2e06da06ef6277ac3f68abe82c52f36" alt="AK Visuals Studio">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h3>Social Media Post Design</h3>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ad"></i>
+                    </div>
+                    <h3>Banner Design</h3>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Brochure Design</h3>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3>Business Card Design</h3>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Logo Design</h3>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3>Letterhead & Envelope Design</h3>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Menu Card Design</h3>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Invitation Card Design</h3>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Packaging Design</h3>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3>Canopy Design</h3>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Web & App UI/UX Design</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Works</h2>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://z-cdn-media.chatglm.cn/files/bec3c6b2-56ca-4ba5-b283-89a4f231eb78_Slide%2016_9%20-%206.png?auth_key=1790492816-d087832daae7482089eb56ac375eca78-0-e2e06da06ef6277ac3f68abe82c52f36" alt="Vortiq Motors Building">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/abdealikothari" target="_blank">View Project</a>
+                    </div>
+                    <div class="portfolio-category">Branding</div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://z-cdn-media.chatglm.cn/files/77463ca9-eafe-49bf-bdff-f22828abdbfd_Slide%2016_9%20-%209.png?auth_key=1790492816-c49b71a7cba848ceadb4e4a5ff328f63-0-06dc9debaa14c7135c07ab7394ea02ef" alt="Vortiq Motors Brand Materials">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/abdealikothari" target="_blank">View Project</a>
+                    </div>
+                    <div class="portfolio-category">Branding</div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://z-cdn-media.chatglm.cn/files/2928e6f9-6a89-4f6b-8716-af14d46a9cee_Slide%2016_9%20-%2010.png?auth_key=1790492816-9e3a7fdc96c24bb592888f83d23964cc-0-5dc10e5f301c9a86d3e79b2ae947e013" alt="Atlas Code Brand Materials">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/abdealikothari" target="_blank">View Project</a>
+                    </div>
+                    <div class="portfolio-category">Branding</div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://z-cdn-media.chatglm.cn/files/d6b48bbe-19bc-4a24-bd4c-5876a585110d_Slide%2016_9%20-%2014.png?auth_key=1790492816-cd733528abe2431bacd60dd9f627d658-0-1aedaace2079d29c2a13454dba455e7e" alt="CODEVERTEX SOLUTIONS Brochure">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/abdealikothari" target="_blank">View Project</a>
+                    </div>
+                    <div class="portfolio-category">Brochure</div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://z-cdn-media.chatglm.cn/files/4b503f29-ffc8-47b6-8775-a65c3f8ed0df_Slide%2016_9%20-%2017.png?auth_key=1790492816-72d30637adae43ac91788012fa4eae7a-0-fab4bb3345b935e35bfe7dbb0f8d828b" alt="Menu Card">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/abdealikothari" target="_blank">View Project</a>
+                    </div>
+                    <div class="portfolio-category">Menu Design</div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://z-cdn-media.chatglm.cn/files/dc3deedf-4a30-4340-9110-950cd27c2393_Slide%2016_9%20-%2020.png?auth_key=1790492816-728f7b4198234e4e94dee7f3ba18e933-0-8c8a87520fc0a2eae1e1fdc18c8193bf" alt="Wedding Invitation">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/abdealikothari" target="_blank">View Project</a>
+                    </div>
+                    <div class="portfolio-category">Invitation</div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://z-cdn-media.chatglm.cn/files/de5aebf9-d122-473f-bf20-ccb7de9ab42b_Slide%2016_9%20-%2021.png?auth_key=1790492816-01efcd91896d4ec38c7fa0277d9c2b4b-0-f583da0c7be74a147c3c5a6056ec2606" alt="Birthday Invitation">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/abdealikothari" target="_blank">View Project</a>
+                    </div>
+                    <div class="portfolio-category">Invitation</div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://z-cdn-media.chatglm.cn/files/7c692d81-f735-4640-9e80-1200b1cd266f_Slide%2016_9%20-%2023.png?auth_key=1790492816-8f30062f474d4dd2872b3011b9339925-0-498e775ac4fdd84a20c5b576a4d7e498" alt="AquaBloom Skincare Packaging">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/abdealikothari" target="_blank">View Project</a>
+                    </div>
+                    <div class="portfolio-category">Packaging</div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://z-cdn-media.chatglm.cn/files/e0164793-bb0f-47cf-8acf-0cf96f9bb6d0_Slide%2016_9%20-%2028.png?auth_key=1790492816-3daaa0bb44fb448794ee781ee3267b7a-0-bd90fd5b380d097614d07c203b251706" alt="La Mielle Serum Packaging">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/abdealikothari" target="_blank">View Project</a>
+                    </div>
+                    <div class="portfolio-category">Packaging</div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://z-cdn-media.chatglm.cn/files/b600684c-8075-420f-9e43-18244d523e40_Slide%2016_9%20-%2034.png?auth_key=1790492816-fd8d5ae1a2674b30b5b7d68c9459c5b6-0-6c6f87c70c722dcf148c9d65425d63b0" alt="VORTIQ MOTORS Exhibition">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/abdealikothari" target="_blank">View Project</a>
+                    </div>
+                    <div class="portfolio-category">Exhibition</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-media" id="social">
+        <div class="container">
+            <div class="section-title">
+                <h2>Follow Us On Instagram</h2>
+            </div>
+            <div class="social-content">
+                <p>For daily design inspiration and to see more of my latest work, follow me on Instagram. I regularly share behind-the-scenes content, design tips, and showcase my newest projects.</p>
+                <div class="follow-instagram">
+                    <a href="https://www.instagram.com/visualsby_akothari/" target="_blank">
+                        <i class="fab fa-instagram"></i> Follow on Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-item">
+                    <p class="testimonial-text">Working with AK Visuals was an absolute pleasure. They transformed our vision into a stunning visual identity that perfectly represents our brand. The attention to detail and creative approach exceeded our expectations.</p>
+                    <div class="testimonial-author">
+                        Priya Sharma
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-card">
+                    <h3>Let's Connect</h3>
+                    <p>Have a project in mind or want to discuss design ideas? Reach out to me directly through any of the options below.</p>
+                    <div class="contact-buttons">
+                        <a href="mailto:abdealikothariwork@gmail.com" class="contact-button email-button">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email Me</span>
+                        </a>
+                        <a href="tel:8866763334" class="contact-button phone-button">
+                            <i class="fas fa-phone"></i>
+                            <span>Call Me</span>
+                        </a>
+                        <a href="https://wa.me/918866763334" class="contact-button whatsapp-button" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <a href="mailto:abdealikothariwork@gmail.com">abdealikothariwork@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <a href="tel:8866763334">8866763334</a>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.behance.net/abdealikothari" target="_blank">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                        <a href="https://www.instagram.com/visualsby_akothari/" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://www.behance.net/abdealikothari" target="_blank">Behance</a>
+                <a href="https://www.instagram.com/visualsby_akothari/" target="_blank">Instagram</a>
+            </div>
+            <div class="copyright">
+                Copyright © AK Visuals
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Mobile Navigation Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
+        
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Testimonial Slider
+        const testimonials = [
+            {
+                text: "Working with AK Visuals was an absolute pleasure. They transformed our vision into a stunning visual identity that perfectly represents our brand. The attention to detail and creative approach exceeded our expectations.",
+                author: "Priya Sharma"
+            },
+            {
+                text: "AK Visuals delivered exceptional UI/UX design for our mobile app. The user experience improved significantly, and we've seen a 40% increase in user engagement. Their work is professional, creative, and a joy to work with.",
+                author: "Rahul Verma"
+            },
+            {
+                text: "The social media graphics created by AK Visuals helped us establish a strong visual presence online. Our engagement rates have doubled, and we receive compliments on our designs daily. Highly recommend their services!",
+                author: "Ananya Patel"
+            }
+        ];
+        
+        let currentTestimonial = 0;
+        const testimonialItem = document.querySelector('.testimonial-item');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        function showTestimonial(index) {
+            testimonialItem.innerHTML = `
+                <p class="testimonial-text">${testimonials[index].text}</p>
+                <div class="testimonial-author">
+                    ${testimonials[index].author}
+                </div>
+            `;
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offsetTop = targetElement.offsetTop - 80;
+                    
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
